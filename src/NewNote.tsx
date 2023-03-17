@@ -3,15 +3,19 @@ import NoteForm from "./NoteForm";
 
 type NewNoteProps = {
   onSubmit: (data: NoteData) => void;
-  onAddTag: (tag: Tag) => void
-  availableTags: Tag[]
+  onAddTag: (tag: Tag) => void;
+  availableTags: Tag[];
 };
 
 function NewNote({ onSubmit, onAddTag, availableTags }: NewNoteProps) {
   return (
     <>
       <h1 className="text-3xl">New Note</h1>
-      <NoteForm onSubmit={onSubmit} onAddTag={onAddTag} availableTags={availableTags} />
+      <NoteForm
+        onSubmit={onSubmit}
+        onAddTag={onAddTag}
+        availableTags={availableTags}
+      />
     </>
   );
 }
