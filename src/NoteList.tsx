@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Tag } from "./App";
 import { Dialog, Transition } from "@headlessui/react";
+import { useNavigate } from "react-router-dom";
 
 type SimplifiedNote = {
   tags: Tag[];
@@ -13,19 +14,25 @@ type SimplifiedNote = {
 type NoteListProps = {
   availableTags: Tag[];
   notes: SimplifiedNote[];
-  deleteTag: (id: string) => void
-  updateTag: (id: string, label: string) => void
+  deleteTag: (id: string) => void;
+  updateTag: (id: string, label: string) => void;
 };
 
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
-  availableTags: Tag[]
-  deleteTag: (id: string) => void
-  updateTag: (id: string, label: string) => void
+  availableTags: Tag[];
+  deleteTag: (id: string) => void;
+  updateTag: (id: string, label: string) => void;
 };
 
-function NoteList({ availableTags, notes, deleteTag, updateTag }: NoteListProps) {
+function NoteList({
+  availableTags,
+  notes,
+  deleteTag,
+  updateTag,
+}: NoteListProps) {
+  const navigate = useNavigate();
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
 
@@ -54,26 +61,35 @@ function NoteList({ availableTags, notes, deleteTag, updateTag }: NoteListProps)
 
   return (
     <>
-      <div>
+      <div className="flex justify-between">
         <div>
-          <h1>Notes</h1>
+          <h1 className="text-4xl font-semibold text-slate-900">Notes</h1>
         </div>
-        <div>
-          <Link to="/new">
-            <button>Create</button>
-          </Link>
-          <button onClick={() => openModal()}>Edit Tags</button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => navigate("/new")}
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-5 text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
+          >
+            Create
+          </button>
+          <button
+            onClick={() => openModal()}
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-5 text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
+          >
+            Edit Tags
+          </button>
         </div>
       </div>
-      <form>
+      <form className="mt-2">
         <div>
           <div>
-            <label>
+            <label className="flex flex-col">
               Title
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                className="w-60 rounded focus:outline-none focus:ring focus:ring-violet-300"
               />
             </label>
           </div>
@@ -95,6 +111,29 @@ function NoteList({ availableTags, notes, deleteTag, updateTag }: NoteListProps)
                   );
                 }}
                 isMulti
+                styles={{
+                  option: (baseStyles, state) => ({
+                    ...baseStyles,
+                    color: state.isSelected ? "#0f172a" : "#0f172a",
+                    backgroundColor: state.isSelected ? "#fff" : "#fff",
+                    ':hover': {
+                      backgroundColor: "#f3e8ff",
+                    }
+                  }),
+
+                  control: (baseStyles) => ({
+                    ...baseStyles,
+                    backgroundColor: "#fff",
+                    padding: "0",
+                    border: "none",
+                    boxShadow: "none",
+                    borderRadius: "0.25rem",
+                  }),
+                  singleValue: (baseStyles) => ({
+                    ...baseStyles,
+                    color: "#fff",
+                  }),
+                }}
               />
             </label>
           </div>
@@ -110,7 +149,13 @@ function NoteList({ availableTags, notes, deleteTag, updateTag }: NoteListProps)
           />
         ))}
       </div>
-      <EditTagsModal modalIsOpen={modalIsOpen} closeModal={closeModal} availableTags={availableTags} deleteTag={deleteTag} updateTag={updateTag} />
+      <EditTagsModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        availableTags={availableTags}
+        deleteTag={deleteTag}
+        updateTag={updateTag}
+      />
     </>
   );
 }
@@ -137,7 +182,13 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
   );
 }
 
-function EditTagsModal({ modalIsOpen, closeModal, availableTags, deleteTag, updateTag }: ModalProps) {
+function EditTagsModal({
+  modalIsOpen,
+  closeModal,
+  availableTags,
+  deleteTag,
+  updateTag,
+}: ModalProps) {
   return (
     <Transition show={modalIsOpen} as={Fragment}>
       <Dialog className="relative z-10" onClose={() => closeModal()}>
@@ -172,13 +223,19 @@ function EditTagsModal({ modalIsOpen, closeModal, availableTags, deleteTag, upda
 
               <form>
                 <div>
-                  {availableTags.map(tag => (
+                  {availableTags.map((tag) => (
                     <div key={tag.id}>
                       <div>
-                        <input type="text" value={tag.label} onChange={e => updateTag(tag.id, e.target.value)} />
+                        <input
+                          type="text"
+                          value={tag.label}
+                          onChange={(e) => updateTag(tag.id, e.target.value)}
+                        />
                       </div>
                       <div>
-                        <button onClick={() => deleteTag(tag.id)}>&times;</button>
+                        <button onClick={() => deleteTag(tag.id)}>
+                          &times;
+                        </button>
                       </div>
                     </div>
                   ))}
