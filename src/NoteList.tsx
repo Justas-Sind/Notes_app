@@ -63,83 +63,86 @@ function NoteList({
     <>
       <div className="flex justify-between">
         <div>
-          <h1 className="text-4xl font-semibold text-slate-900">Notes</h1>
+          <h1 className="mb-2 text-4xl font-semibold text-slate-900">Notes</h1>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate("/new")}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-5 text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
           >
             Create
           </button>
           <button
             onClick={() => openModal()}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-5 text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
           >
             Edit Tags
           </button>
         </div>
       </div>
-      <form className="mt-2">
+      <form className="flex flex-col gap-2">
+        <div className="flex flex-col">
+          <p>Title</p>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-60 rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
+          />
+        </div>
         <div>
-          <div>
-            <label className="flex flex-col">
-              Title
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-60 rounded focus:outline-none focus:ring focus:ring-violet-300"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Tags{" "}
-              <ReactSelect
-                value={selectedTags.map((tag) => {
-                  return { label: tag.label, value: tag.id };
-                })}
-                options={availableTags.map((tag) => {
-                  return { label: tag.label, value: tag.id };
-                })}
-                onChange={(tags) => {
-                  setSelectedTags(
-                    tags.map((tag) => {
-                      return { label: tag.label, id: tag.value };
-                    })
-                  );
-                }}
-                isMulti
-                styles={{
-                  option: (baseStyles, state) => ({
-                    ...baseStyles,
-                    color: state.isSelected ? "#0f172a" : "#0f172a",
-                    backgroundColor: state.isSelected ? "#fff" : "#fff",
-                    ':hover': {
-                      backgroundColor: "#f3e8ff",
-                    }
-                  }),
+          <p>Tags</p>
+          <ReactSelect
+            value={selectedTags.map((tag) => {
+              return { label: tag.label, value: tag.id };
+            })}
+            options={availableTags.map((tag) => {
+              return { label: tag.label, value: tag.id };
+            })}
+            onChange={(tags) => {
+              setSelectedTags(
+                tags.map((tag) => {
+                  return { label: tag.label, id: tag.value };
+                })
+              );
+            }}
+            isMulti
+            styles={{
+              option: (baseStyles, state) => ({
+                ...baseStyles,
+                color: state.isSelected ? "#0f172a" : "#0f172a",
+                backgroundColor: state.isSelected ? "#fff" : "#fff",
+                ":hover": {
+                  cursor: "pointer",
+                  backgroundColor: "#f3e8ff",
+                },
+              }),
 
-                  control: (baseStyles) => ({
-                    ...baseStyles,
-                    backgroundColor: "#fff",
-                    padding: "0",
-                    border: "none",
-                    boxShadow: "none",
-                    borderRadius: "0.25rem",
-                  }),
-                  singleValue: (baseStyles) => ({
-                    ...baseStyles,
-                    color: "#fff",
-                  }),
-                }}
-              />
-            </label>
-          </div>
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                backgroundColor: "#fff",
+                padding: "0",
+                border: state.isFocused
+                  ? "3px solid #d8b4fe"
+                  : "3px solid #fff",
+                boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+                borderRadius: "0.25rem",
+                ":hover": {
+                  cursor: "pointer",
+                  border: "3px solid #d8b4fe",
+                },
+              }),
+              multiValueLabel: (baseStyles) => ({
+                ...baseStyles,
+                backgroundColor: "#c084fc",
+                color: "#fff",
+                padding: "0.2rem 0.5rem",
+              }),
+            }}
+          />
         </div>
       </form>
-      <div>
+      <div className="mt-8 grid auto-rows-fr grid-cols-fill-200min gap-4">
         {filteredNotes.map((note) => (
           <NoteCard
             key={note.id}
@@ -162,17 +165,17 @@ function NoteList({
 
 function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
-    <div>
+    <div className="rounded bg-white shadow transition-all duration-300 hover:bg-purple-100 active:bg-purple-200">
       <Link to={`/${id}`}>
-        <div>
-          <div>
-            <p>{title} </p>
+        <div className="h-full p-2">
+          <div className="mb-2">
+            <p className="text-lg">{title}</p>
           </div>
-          <div>
+          <div className="flex flex-wrap gap-1">
             {tags.length > 0 &&
               tags.map((tag) => (
-                <div key={tag.id}>
-                  <p>{tag.label}</p>
+                <div key={tag.id} className="rounded bg-purple-400 py-1.5 px-2">
+                  <p className="leading-none text-white">{tag.label}</p>
                 </div>
               ))}
           </div>
