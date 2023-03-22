@@ -216,7 +216,7 @@ function EditTagsModal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all">
               <Dialog.Title
                 as="h3"
                 className="text-lg font-medium leading-6 text-gray-900"
@@ -224,30 +224,31 @@ function EditTagsModal({
                 Edit Tags
               </Dialog.Title>
 
-              <form>
-                <div>
-                  {availableTags.map((tag) => (
-                    <div key={tag.id}>
-                      <div>
-                        <input
-                          type="text"
-                          value={tag.label}
-                          onChange={(e) => updateTag(tag.id, e.target.value)}
-                        />
-                      </div>
-                      <div>
-                        <button onClick={() => deleteTag(tag.id)}>
-                          &times;
-                        </button>
-                      </div>
+              <form className="my-2 flex flex-col gap-2">
+                {availableTags.map((tag) => (
+                  <div key={tag.id} className="flex">
+                    <div className="flex-grow">
+                      <input
+                        type="text"
+                        value={tag.label}
+                        onChange={(e) => updateTag(tag.id, e.target.value)}
+                        className="w-full rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <div>
+                      <button
+                        onClick={() => deleteTag(tag.id)}
+                        className="flex h-full rounded bg-red-400 px-2 text-xl font-semibold text-white transition-all duration-300 hover:bg-red-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-red-600"
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </form>
-
               <button
                 onClick={() => closeModal()}
-                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
               >
                 Close
               </button>
