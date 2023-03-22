@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useNote } from "./NoteLayout";
 
 type NoteProps = {

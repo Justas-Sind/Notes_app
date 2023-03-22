@@ -1,7 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import { Link, useNavigate } from "react-router-dom";
-import { NoteData, Tag } from "./App";
+import { NoteData, Tag } from "../App";
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void;

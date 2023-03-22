@@ -1,11 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import NewNote from "./NewNote";
-import NoteList from "./NoteList";
-import useLocalStorage from "./useLocalStorage";
+import NewNote from "./components/NewNote";
+import NoteList from "./components/NoteList";
+import useLocalStorage from "./hooks/useLocalStorage";
 import { useMemo } from "react";
-import NoteLayout from "./NoteLayout";
-import Note from "./Note";
-import EditNote from "./EditNote";
+import NoteLayout from "./components/NoteLayout";
+import Note from "./components/Note";
+import EditNote from "./components/EditNote";
 
 export type Note = {
   id: string;

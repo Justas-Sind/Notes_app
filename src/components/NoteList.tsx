@@ -1,7 +1,7 @@
 import { useState, useMemo, Fragment } from "react";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
-import { Tag } from "./App";
+import { Tag } from "../App";
 import { Dialog, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 
