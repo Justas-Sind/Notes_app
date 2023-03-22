@@ -63,7 +63,7 @@ function Note({ onDelete }: NoteProps) {
           </button>
         </div>
       </div>
-      <div >
+      <div>
         <ReactMarkdown>{note.markdown}</ReactMarkdown>
       </div>
     </>
