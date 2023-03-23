@@ -109,38 +109,8 @@ function NoteList({
               );
             }}
             isMulti
-            styles={{
-              option: (baseStyles, state) => ({
-                ...baseStyles,
-                color: state.isSelected ? "#0f172a" : "#0f172a",
-                backgroundColor: state.isSelected ? "#fff" : "#fff",
-                ":hover": {
-                  cursor: "pointer",
-                  backgroundColor: "#f3e8ff",
-                },
-              }),
-
-              control: (baseStyles, state) => ({
-                ...baseStyles,
-                backgroundColor: "#fff",
-                padding: "0",
-                border: state.isFocused
-                  ? "3px solid #d8b4fe"
-                  : "3px solid #fff",
-                boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
-                borderRadius: "0.25rem",
-                ":hover": {
-                  cursor: "pointer",
-                  border: "3px solid #d8b4fe",
-                },
-              }),
-              multiValueLabel: (baseStyles) => ({
-                ...baseStyles,
-                backgroundColor: "#c084fc",
-                color: "#fff",
-                padding: "0.2rem 0.5rem",
-              }),
-            }}
+            className="my-react-select-container"
+            classNamePrefix="my-react-select"
           />
         </div>
       </form>
