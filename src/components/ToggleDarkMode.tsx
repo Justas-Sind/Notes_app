@@ -1,17 +1,35 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { useEffect } from "react";
+
 
 export default function ToggleDarkMode() {
   const [enabled, setEnabled] = useState(false);
 
-  if(enabled) document.documentElement.classList.add('dark');
-  else document.documentElement.classList.remove('dark');
+  useEffect(() => {
+    if(localStorage.theme === "dark") {
+      setEnabled(true);
+    }
+  }, []);
+
+  function handleTheme() {
+    if(enabled) {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = 'light';
+      setEnabled(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = 'dark';
+      setEnabled(true);
+    }
+  }
 
   return (
     <div className="">
       <Switch
         checked={enabled}
-        onChange={setEnabled}
+        onClick={() => handleTheme()}
         className={`${enabled ? "bg-purple-600" : "bg-slate-400"}
           relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
       >
