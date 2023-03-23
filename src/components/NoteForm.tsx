@@ -41,10 +41,11 @@ function NoteForm({
         <input
           type="text"
           name="title"
+          maxLength={20}
           ref={titleRef}
           required
           defaultValue={title}
-          className="w-60 rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
+          className="max-w-xs rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
         />
       </div>
       <div>
@@ -110,6 +111,7 @@ function NoteForm({
           name="body"
           cols={30}
           rows={15}
+          maxLength={2000}
           required
           ref={markdownRef}
           defaultValue={markdown}

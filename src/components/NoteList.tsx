@@ -61,7 +61,7 @@ function NoteList({
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex flex-wrap justify-between">
         <div>
           <h1 className="mb-2 text-4xl font-semibold text-slate-900">Notes</h1>
         </div>
@@ -87,7 +87,7 @@ function NoteList({
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-60 rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
+            className="max-w-xs rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
           />
         </div>
         <div>
