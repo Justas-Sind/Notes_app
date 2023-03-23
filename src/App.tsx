@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import NoteLayout from "./components/NoteLayout";
 import Note from "./components/Note";
 import EditNote from "./components/EditNote";
+import TopBar from "./components/TopBar";
 
 export type Note = {
   id: string;
@@ -95,45 +96,50 @@ function App() {
   }
 
   return (
-    <div className="m-10">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <NoteList
-              notes={notesWithTags}
-              availableTags={tags}
-              updateTag={updateTag}
-              deleteTag={deleteTag}
-            />
-          }
-        />
-        <Route
-          path="/new"
-          element={
-            <NewNote
-              onSubmit={onCreateNote}
-              onAddTag={addTag}
-              availableTags={tags}
-            />
-          }
-        />
-        <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
-          <Route index element={<Note onDelete={onDeleteNote} />} />
+    <>
+      <header>
+        <TopBar />
+      </header>
+      <main className="mx-10 my-8 transition-colors duration-100 dark:text-slate-50">
+        <Routes>
           <Route
-            path="edit"
+            path="/"
             element={
-              <EditNote
-                onSubmit={onUpdateNote}
+              <NoteList
+                notes={notesWithTags}
+                availableTags={tags}
+                updateTag={updateTag}
+                deleteTag={deleteTag}
+              />
+            }
+          />
+          <Route
+            path="/new"
+            element={
+              <NewNote
+                onSubmit={onCreateNote}
                 onAddTag={addTag}
                 availableTags={tags}
               />
             }
           />
-        </Route>
-        <Route path="/*" element={<Navigate to="/" />} />
-      </Routes>
-    </div>
+          <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
+            <Route index element={<Note onDelete={onDeleteNote} />} />
+            <Route
+              path="edit"
+              element={
+                <EditNote
+                  onSubmit={onUpdateNote}
+                  onAddTag={addTag}
+                  availableTags={tags}
+                />
+              }
+            />
+          </Route>
+          <Route path="/*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
+    </>
   );
 }
 

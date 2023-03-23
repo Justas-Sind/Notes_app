@@ -5,9 +5,10 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Notes grid with auto-fill
-        'fill-200min': 'repeat(auto-fill, minmax(200px, 1fr))',
-      }
+        "fill-200min": "repeat(auto-fill, minmax(200px, 1fr))",
+      },
     },
   },
-  plugins: [],
+  darkMode: "class",
+  plugins: [require("@headlessui/tailwindcss")],
 };

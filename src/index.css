@@ -4,6 +4,7 @@
 
 body {
   background-color: #f1f5f9;
+  transition: background-color 300ms;
 }
 
 h1 {
@@ -36,4 +37,8 @@ strong {
 
 em {
   font-style: italic;
+}
+
+.dark > body {
+  background-color: #0f172a;
 }

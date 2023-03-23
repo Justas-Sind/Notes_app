@@ -63,18 +63,20 @@ function NoteList({
     <>
       <div className="flex flex-wrap justify-between">
         <div>
-          <h1 className="mb-2 text-4xl font-semibold text-slate-900">Notes</h1>
+          <h1 className="mb-2 text-4xl font-semibold text-slate-900 dark:text-slate-50">
+            Notes
+          </h1>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate("/new")}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
           >
             Create
           </button>
           <button
             onClick={() => openModal()}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
           >
             Edit Tags
           </button>
@@ -87,7 +89,7 @@ function NoteList({
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="max-w-xs rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
+            className="max-w-xs rounded py-1 px-2 shadow transition-colors duration-300 focus:outline-none focus:ring focus:ring-purple-300 dark:bg-slate-600"
           />
         </div>
         <div>
@@ -165,7 +167,7 @@ function NoteList({
 
 function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
-    <div className="rounded bg-white shadow transition-all duration-300 hover:bg-purple-100 active:bg-purple-200">
+    <div className="rounded bg-white shadow transition-all duration-300 hover:bg-purple-100 active:bg-purple-200 dark:bg-slate-700 dark:hover:bg-slate-600">
       <Link to={`/${id}`}>
         <div className="h-full p-2">
           <div className="mb-2">
@@ -175,7 +177,7 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
             {tags.length > 0 &&
               tags.map((tag) => (
                 <div key={tag.id} className="rounded bg-purple-400 py-1.5 px-2">
-                  <p className="leading-none text-white">{tag.label}</p>
+                  <p className="leading-none text-slate-50">{tag.label}</p>
                 </div>
               ))}
           </div>
@@ -216,29 +218,29 @@ function EditTagsModal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all">
+            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-slate-100 p-6 text-left align-middle shadow-xl transition-all dark:bg-slate-800">
               <Dialog.Title
                 as="h3"
-                className="text-lg font-medium leading-6 text-gray-900"
+                className="text-lg font-medium leading-6 text-gray-900 dark:text-slate-50"
               >
                 Edit Tags
               </Dialog.Title>
 
               <form className="my-2 flex flex-col gap-2">
                 {availableTags.map((tag) => (
-                  <div key={tag.id} className="flex">
+                  <div key={tag.id} className="flex gap-1">
                     <div className="flex-grow">
                       <input
                         type="text"
                         value={tag.label}
                         onChange={(e) => updateTag(tag.id, e.target.value)}
-                        className="w-full rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300"
+                        className="w-full rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300 dark:bg-slate-600 dark:text-slate-50"
                       />
                     </div>
                     <div>
                       <button
                         onClick={() => deleteTag(tag.id)}
-                        className="flex h-full rounded bg-red-400 px-2 text-xl font-semibold text-white transition-all duration-300 hover:bg-red-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-red-600"
+                        className="flex h-full rounded bg-red-400 px-2 text-xl font-semibold text-white transition-all duration-300 hover:bg-red-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 dark:active:bg-red-700"
                       >
                         &times;
                       </button>
@@ -248,7 +250,7 @@ function EditTagsModal({
               </form>
               <button
                 onClick={() => closeModal()}
-                className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600"
+                className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
               >
                 Close
               </button>
