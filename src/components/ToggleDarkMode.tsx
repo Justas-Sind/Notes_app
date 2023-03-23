@@ -3,24 +3,27 @@ import { Switch } from "@headlessui/react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useEffect } from "react";
 
-
 export default function ToggleDarkMode() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if(localStorage.theme === "dark") {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
       setEnabled(true);
     }
   }, []);
 
   function handleTheme() {
-    if(enabled) {
+    if (enabled) {
       document.documentElement.classList.remove("dark");
-      localStorage.theme = 'light';
+      localStorage.theme = "light";
       setEnabled(false);
     } else {
       document.documentElement.classList.add("dark");
-      localStorage.theme = 'dark';
+      localStorage.theme = "dark";
       setEnabled(true);
     }
   }
