@@ -30,7 +30,7 @@ function Note({ onDelete }: NoteProps) {
         <div>
           <button
             onClick={() => navigate("/")}
-            className="hidden items-center gap-1 rounded-full bg-slate-400 py-1.5 px-4 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-slate-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-slate-600 dark:bg-slate-500 dark:hover:bg-slate-600 dark:active:bg-slate-700 sm:flex"
+            className="hidden items-center gap-1 rounded-full bg-slate-400 py-1.5 px-4 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-slate-500 focus:outline active:bg-slate-600 dark:bg-slate-500 dark:hover:bg-slate-600 dark:active:bg-slate-700 sm:flex"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ function Note({ onDelete }: NoteProps) {
           </button>
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-1 rounded-full bg-slate-400 py-1.5 px-2.5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-slate-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-slate-600 sm:hidden"
+            className="flex items-center gap-1 rounded-full bg-slate-400 py-1.5 px-2.5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-slate-500 focus:outline active:bg-slate-600 sm:hidden"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,12 +75,12 @@ function Note({ onDelete }: NoteProps) {
       <div className="flex items-center gap-2">
         <button
           onClick={() => navigate(`/${note.id}/edit`)}
-          className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+          className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
         >
           Edit
         </button>
         <button
-          className="rounded-full bg-red-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-red-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 dark:active:bg-red-700"
+          className="rounded-full bg-red-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-red-500 focus:outline active:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 dark:active:bg-red-700"
           onClick={() => {
             onDelete(note.id);
             navigate("/");

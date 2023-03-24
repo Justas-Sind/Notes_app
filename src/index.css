@@ -7,6 +7,10 @@ body {
   transition: background-color 300ms;
 }
 
+button, a, img, div {
+  -webkit-tap-highlight-color: transparent;
+}
+
 h1 {
   font-size: 2rem;
 }

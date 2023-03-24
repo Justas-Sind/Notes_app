@@ -34,7 +34,7 @@ export default function ToggleDarkMode() {
         checked={enabled}
         onClick={() => handleTheme()}
         className={`${enabled ? "bg-purple-600" : "bg-slate-400"}
-          relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full outline-2 outline-purple-300 transition-colors duration-200 ease-in-out focus:outline focus-visible:ring-opacity-75`}
       >
         <span className="sr-only">Dark Mode Switch</span>
         <span

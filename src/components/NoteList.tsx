@@ -70,13 +70,13 @@ function NoteList({
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate("/new")}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
           >
             Create
           </button>
           <button
             onClick={() => openModal()}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
           >
             Edit Tags
           </button>
@@ -89,7 +89,7 @@ function NoteList({
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="max-w-xs rounded py-1 px-2 shadow transition-colors duration-300 focus:outline-none focus:ring focus:ring-purple-300 dark:bg-slate-600"
+            className="max-w-xs rounded py-1 px-2 shadow outline-2 outline-purple-300 transition-colors duration-300 focus:outline dark:bg-slate-600"
           />
         </div>
         <div>
@@ -137,8 +137,8 @@ function NoteList({
 
 function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
-    <div className="rounded bg-white shadow transition-all duration-300 hover:bg-purple-100 active:bg-purple-200 dark:bg-slate-700 dark:hover:bg-slate-600">
-      <Link to={`/${id}`}>
+    <div className="rounded bg-white shadow transition-all duration-300  hover:bg-purple-100 active:bg-purple-200 dark:bg-slate-700 dark:hover:bg-slate-600">
+      <Link to={`/${id}`} className="outline-2 outline-purple-300">
         <div className="h-full p-2">
           <div className="mb-2">
             <p className="text-lg">{title}</p>
@@ -204,13 +204,13 @@ function EditTagsModal({
                         type="text"
                         value={tag.label}
                         onChange={(e) => updateTag(tag.id, e.target.value)}
-                        className="w-full rounded py-1 px-2 shadow focus:outline-none focus:ring focus:ring-purple-300 dark:bg-slate-600 dark:text-slate-50"
+                        className="w-full rounded py-1 px-2 shadow outline-2 outline-purple-300 focus:outline dark:bg-slate-600 dark:text-slate-50"
                       />
                     </div>
                     <div>
                       <button
                         onClick={() => deleteTag(tag.id)}
-                        className="flex h-full rounded bg-red-400 px-2 text-xl font-semibold text-white transition-all duration-300 hover:bg-red-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 dark:active:bg-red-700"
+                        className="flex h-full rounded bg-red-400 px-2 text-xl font-semibold text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-red-500 focus:outline active:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 dark:active:bg-red-700"
                       >
                         &times;
                       </button>
@@ -220,7 +220,7 @@ function EditTagsModal({
               </form>
               <button
                 onClick={() => closeModal()}
-                className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+                className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
               >
                 Close
               </button>

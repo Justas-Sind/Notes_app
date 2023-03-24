@@ -45,7 +45,7 @@ function NoteForm({
           ref={titleRef}
           required
           defaultValue={title}
-          className="max-w-xs rounded py-1 px-2 shadow transition-colors duration-300 focus:outline-none focus:ring focus:ring-purple-300 dark:bg-slate-600"
+          className="max-w-xs rounded py-1 px-2 shadow outline-2 outline-purple-300 transition-colors duration-300 focus:outline dark:bg-slate-600"
         />
       </div>
       <div>
@@ -87,20 +87,20 @@ function NoteForm({
           required
           ref={markdownRef}
           defaultValue={markdown}
-          className="w-full rounded py-1 px-2 shadow transition-colors duration-300 focus:outline-none focus:ring focus:ring-purple-300 dark:bg-slate-600"
+          className="w-full rounded py-1 px-2 shadow outline-2 outline-purple-300 transition-colors duration-300 focus:outline dark:bg-slate-600"
         ></textarea>
       </div>
       <div className="flex items-center gap-2">
         <button
           type="submit"
-          className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+          className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
         >
           Save
         </button>
         <Link to="..">
           <button
             type="button"
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white transition-all duration-300 hover:bg-purple-500 focus:outline-none focus:ring focus:ring-purple-300 active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
           >
             Cancel
           </button>
