@@ -70,13 +70,13 @@ function NoteList({
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate("/new")}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:bg-purple-600 dark:active:bg-purple-700"
           >
             Create
           </button>
           <button
             onClick={() => openModal()}
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:bg-purple-600 dark:active:bg-purple-700"
           >
             Edit Tags
           </button>
@@ -137,7 +137,7 @@ function NoteList({
 
 function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
-    <div className="rounded bg-white shadow transition-all duration-300  hover:bg-purple-100 active:bg-purple-200 dark:bg-slate-700 dark:hover:bg-slate-600">
+    <div className="rounded bg-white shadow transition-all duration-300  hover:bg-purple-100 focus:bg-purple-100 active:bg-purple-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:focus:bg-slate-600">
       <Link to={`/${id}`} className="outline-2 outline-purple-300">
         <div className="h-full p-2">
           <div className="mb-2">
@@ -210,7 +210,7 @@ function EditTagsModal({
                     <div>
                       <button
                         onClick={() => deleteTag(tag.id)}
-                        className="flex h-full rounded bg-red-400 px-2 text-xl font-semibold text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-red-500 focus:outline active:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 dark:active:bg-red-700"
+                        className="flex h-full rounded bg-red-400 px-2 text-xl font-semibold text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-red-500 focus:bg-red-500 focus:outline active:bg-red-600 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:bg-red-600 dark:active:bg-red-700"
                       >
                         &times;
                       </button>
@@ -220,7 +220,7 @@ function EditTagsModal({
               </form>
               <button
                 onClick={() => closeModal()}
-                className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+                className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:bg-purple-600 dark:active:bg-purple-700"
               >
                 Close
               </button>

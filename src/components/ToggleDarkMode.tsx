@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import useLocalStorage from "../hooks/useLocalStorage";
 import { useEffect } from "react";
 
 export default function ToggleDarkMode() {

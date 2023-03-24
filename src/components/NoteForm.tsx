@@ -93,14 +93,14 @@ function NoteForm({
       <div className="flex items-center gap-2">
         <button
           type="submit"
-          className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+          className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:bg-purple-600 dark:active:bg-purple-700"
         >
           Save
         </button>
         <Link to="..">
           <button
             type="button"
-            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:active:bg-purple-700"
+            className="rounded-full bg-purple-400 py-2 px-5 text-sm font-semibold leading-none text-white outline-2 outline-purple-300 transition-colors duration-300 hover:bg-purple-500 focus:bg-purple-500 focus:outline active:bg-purple-600 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:bg-purple-600 dark:active:bg-purple-700"
           >
             Cancel
           </button>
