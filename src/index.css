@@ -11,6 +11,10 @@ button, a, img, div {
   -webkit-tap-highlight-color: transparent;
 }
 
+a {
+  -webkit-touch-callout: none;
+}
+
 h1 {
   font-size: 2rem;
 }
